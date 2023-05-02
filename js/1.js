@@ -1,14 +1,10 @@
-func twoSum(nums []int, target int) []int {
-    result := make([]int, 2)
-    bag := make(map[int]int, len(nums)) 
-    for i := 0; i < len(nums); i++ {
-        val, ok := bag[target - nums[i]]
-        if ok {
-            result[0] = val
-            result[1] = i
-            break;
+const twoSum = (nums, target) => {
+    let map = new Map()
+    for (let i = 0; i < nums.length; i++) {
+        const diff = target - nums[i];
+        if (map.has(diff)) {
+            return [i, map.get(diff)]
         }
-        bag[nums[i]] = i
+        map.set(nums[i], i)
     }
-    return result
-}
+};
